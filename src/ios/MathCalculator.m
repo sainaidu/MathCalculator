@@ -33,9 +33,10 @@
     CDVPluginResult* pluginResult = nil;
     NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param1"];
     NSNumber *param2 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
+    NSNumber *res = [NSNumber numberWithInt:([param1 intValue]+[param2 intValue])];
 
     if(param1 >=0 || param2 >= 0){
-        NSString* total = @(param1 + param2);
+        NSString* total = [res stringValue];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:total];
     }else{
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -49,9 +50,10 @@
     CDVPluginResult* pluginResult = nil;
     NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param1"];
     NSNumber *param2 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
-
+    NSNumber *res = [NSNumber numberWithInt:([param1 intValue]-[param2 intValue])];
+    
     if(param1 >=0 || param2 >= 0){
-        NSString* total = @(param1 - param2);
+        NSString* total = [res stringValue];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:total];
     }else{
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
